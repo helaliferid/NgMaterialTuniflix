@@ -7,8 +7,9 @@ import { MatBadgeModule } from '@angular/material/badge'
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
-
-
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatSelectModule} from '@angular/material/select';
+import {MatInputModule} from '@angular/material/input'
 
 const materials = [
   MatButtonModule,
@@ -17,7 +18,10 @@ const materials = [
   MatBadgeModule,
   MatTableModule,
   MatPaginatorModule,
-  MatSortModule
+  MatSortModule,
+  MatFormFieldModule,
+  MatSelectModule,
+  MatInputModule
 ]
 
 @NgModule({
