@@ -7,6 +7,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { MovieFormComponent } from './movie-form/movie-form.component';
 import { MaterialModule } from '../shared/material/material.module';
+import { MovieTableComponent } from './movie-table/movie-table.component';
 
 
 
@@ -14,7 +15,8 @@ import { MaterialModule } from '../shared/material/material.module';
   declarations: [
     MovieContainerComponent,
     MovieListComponent,
-    MovieFormComponent
+    MovieFormComponent,
+    MovieTableComponent
   ],
   imports: [
     CommonModule,

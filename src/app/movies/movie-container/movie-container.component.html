@@ -1,7 +1,8 @@
 <h1>Tuniflix Movies</h1>
 <div class="wrapper">
     <div class="left">
-        <app-movie-list></app-movie-list>
+        <app-movie-list [dataSource]="movies"></app-movie-list>
+        <!-- <app-movie-table></app-movie-table> -->
     </div>
     <div class="right">
         <app-movie-form></app-movie-form>
