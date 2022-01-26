@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+
 
 @Component({
   selector: 'app-movie-form',
@@ -6,10 +7,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./movie-form.component.scss']
 })
 export class MovieFormComponent implements OnInit {
-
-  constructor() { }
+   constructor() { }
 
   ngOnInit(): void {
   }
-
+  saveMovie(){
+    console.log('Save Movie Clicked');
+  }
 }

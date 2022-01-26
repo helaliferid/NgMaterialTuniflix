@@ -45,14 +45,16 @@ export const INITIAL_MOVIES: IMovie[] = [
 })
 export class MovieContainerComponent implements OnInit {
   movies: IMovie[]=INITIAL_MOVIES
+  isMovieFormShowed:boolean=false;
+
 
   constructor() { }
 
   ngOnInit(): void {
   }
 
-  addMovie(movie:IMovie){
-    console.log('Add :',movie);
+  showMovieForm(){
+    this.isMovieFormShowed = !this.isMovieFormShowed
   }
 
   removeMovie(movie:IMovie){
