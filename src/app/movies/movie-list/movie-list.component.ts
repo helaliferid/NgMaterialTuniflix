@@ -8,12 +8,13 @@ import { IMovie } from '../movie-container/movie-container.component';
   styleUrls: ['./movie-list.component.scss']
 })
 export class MovieListComponent implements AfterViewInit {
-   @Input()dataSource: IMovie[]=[];
+   @Input()dataSource: any;
 
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
   displayedColumns = ['title', 'description','cover','actions'];
 
   constructor() {
+    this.dataSource=[]
   }
 
   ngAfterViewInit(): void {

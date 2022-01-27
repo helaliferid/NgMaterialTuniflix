@@ -44,17 +44,23 @@ export const INITIAL_MOVIES: IMovie[] = [
   styleUrls: ['./movie-container.component.scss']
 })
 export class MovieContainerComponent implements OnInit {
-  movies: IMovie[]=INITIAL_MOVIES
+  movies: IMovie[];
   isMovieFormShowed:boolean=false;
 
 
-  constructor() { }
+  constructor() {
+    this.movies=[...INITIAL_MOVIES]
+   }
 
   ngOnInit(): void {
   }
 
   showMovieForm(){
     this.isMovieFormShowed = !this.isMovieFormShowed
+  }
+
+  addMovieToTheList(movie:any){
+    this.movies.push(movie)
   }
 
   removeMovie(movie:IMovie){
