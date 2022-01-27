@@ -8,6 +8,7 @@ import { MatSortModule } from '@angular/material/sort';
 import { MovieFormComponent } from './movie-form/movie-form.component';
 import { MaterialModule } from '../shared/material/material.module';
 import { MovieTableComponent } from './movie-table/movie-table.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -20,7 +21,8 @@ import { MovieTableComponent } from './movie-table/movie-table.component';
   ],
   imports: [
     CommonModule,
-    MaterialModule
+    MaterialModule,
+    ReactiveFormsModule
     
   ],
   exports:[ 
