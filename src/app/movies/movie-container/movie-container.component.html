@@ -1,23 +1,14 @@
 <div class="myBorder">
     <h1>Tuniflix Movies</h1>
-    <button
-        mat-stroked-button
-        color="primary"
-        (click)="showMovieForm()"
-    
-        >Add Movie</button>
+    <button mat-stroked-button color="primary" (click)="showMovieForm()">Add Movie</button>
     <div class="wrapper">
         <div class="left">
-            <app-movie-list
-            [dataSource]="movies"
-            ></app-movie-list>
+            <app-movie-list [movies]="movies"></app-movie-list>
             <!-- <app-movie-table></app-movie-table> -->
         </div>
         <div class="right" *ngIf="isMovieFormShowed">
-            <app-movie-form  
-            (onMovieSave)="addMovieToTheList($event)"
-            >
-        </app-movie-form>
+            <app-movie-form (onMovieSave)="addMovieToTheList($event)">
+            </app-movie-form>
         </div>
     </div>
 </div>
