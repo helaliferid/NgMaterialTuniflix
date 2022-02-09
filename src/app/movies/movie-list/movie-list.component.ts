@@ -1,5 +1,6 @@
-import { AfterViewInit, Component, Input, ViewChild } from '@angular/core';
-import { IMovie } from '../movie-container/movie-container.component';
+import { Component, OnInit, AfterContentInit } from '@angular/core';
+import { IMovie } from '../movie-container/movie.model';
+import { MovieService } from '../movie.service';
 
 
 @Component({
@@ -7,20 +8,27 @@ import { IMovie } from '../movie-container/movie-container.component';
   templateUrl: './movie-list.component.html',
   styleUrls: ['./movie-list.component.scss']
 })
-export class MovieListComponent implements AfterViewInit {
-  @Input() movies: IMovie[] = [];
-  constructor() {
+export class MovieListComponent implements OnInit,AfterContentInit{
+  movies:IMovie[]=[];
+
+  constructor(private movieService:MovieService) {
+   
   }
 
-  ngAfterViewInit(): void {
-
+  
+  ngOnInit(){
+    this.movies=this.movieService.getAllMovies()
   }
-
+  
+  ngAfterContentInit(): void {
+    this.movies=this.movieService.getAllMovies()
+  }
   editMovie(movie:IMovie){
-    console.log('Edit Movie');
+    this.movieService.updateMovie(movie)
   }
 
   deleteMovie(movie:IMovie){
-      console.log('Delete Movie');
+    console.log('delete from the list')
+     this.movieService.removeMovie(movie)
   }
 }

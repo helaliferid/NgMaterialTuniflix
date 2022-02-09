@@ -1,6 +1,7 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { IMovie } from '../movie-container/movie-container.component';
+import { MovieService } from '../movie.service';
+
 
 
 @Component({
@@ -12,7 +13,7 @@ export class MovieFormComponent implements OnInit {
   public movieForm;
   @Output() onMovieSave:EventEmitter<any>=new EventEmitter<any>()
 
-  constructor(private fb:FormBuilder) {
+  constructor(private fb:FormBuilder,private movieService:MovieService) {
     this.movieForm=fb.group({
       title:[''],
       description:[''],
@@ -24,7 +25,7 @@ export class MovieFormComponent implements OnInit {
   }
 
   saveMovie(){
-    console.log(this.movieForm.value);
-    this.onMovieSave.next(this.movieForm.value);
+    this.movieService.addMovie(this.movieForm.value)
+    this.onMovieSave.emit('Ok')
   }
 }
