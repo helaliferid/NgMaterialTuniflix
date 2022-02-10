@@ -3,8 +3,11 @@
     <button mat-stroked-button color="primary" (click)="showMovieForm()">Add Movie</button>
     <div class="wrapper">
         <div class="left">
-            <app-movie-list></app-movie-list>
-            <!-- <app-movie-table></app-movie-table> -->
+            <app-movie-list 
+            [movies]="movies"
+            (onDeleteMovie)="deleteMovie($event)"
+            ></app-movie-list>
+           
         </div>
         <div class="right" *ngIf="isMovieFormShowed">
             <app-movie-form (onMovieSave)="hideForm($event)">

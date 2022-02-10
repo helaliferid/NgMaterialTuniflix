@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterContentInit } from '@angular/core';
+import { Component, OnInit, AfterContentInit, Input, Output, EventEmitter } from '@angular/core';
 import { IMovie } from '../movie-container/movie.model';
 import { MovieService } from '../movie.service';
 
@@ -8,27 +8,23 @@ import { MovieService } from '../movie.service';
   templateUrl: './movie-list.component.html',
   styleUrls: ['./movie-list.component.scss']
 })
-export class MovieListComponent implements OnInit,AfterContentInit{
-  movies:IMovie[]=[];
+export class MovieListComponent implements OnInit{
+  @Input() movies:IMovie[]=[];
+  @Output() onDeleteMovie : EventEmitter<any>=new EventEmitter<IMovie>()
 
   constructor(private movieService:MovieService) {
-   
   }
 
-  
   ngOnInit(){
-    this.movies=this.movieService.getAllMovies()
+   
   }
   
-  ngAfterContentInit(): void {
-    this.movies=this.movieService.getAllMovies()
-  }
+
   editMovie(movie:IMovie){
     this.movieService.updateMovie(movie)
   }
 
   deleteMovie(movie:IMovie){
-    console.log('delete from the list')
-     this.movieService.removeMovie(movie)
+     this.onDeleteMovie.next(movie)
   }
 }
