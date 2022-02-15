@@ -3,7 +3,7 @@
   <br>
   <div class="mat-elevation-z8">
     <button mat-raised-button color="primary"
-    (click)="addMovie()"
+    (click)="showMovieForm()"
     >Add Movie</button>
     <div class="wrapper">
       <div class="left">
@@ -32,7 +32,9 @@
       </table>
     </div>
     <div class="right" *ngIf="isFormVisible">
-      <app-movie-form (onMovieSave)="onSavedMovie()"></app-movie-form>
+      <app-movie-form
+      [movie]="movieToUpdate" 
+      (onMovieSave)="onSavedMovie()"></app-movie-form>
     </div>
     </div>
   </div>
