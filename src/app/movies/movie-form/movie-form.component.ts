@@ -14,6 +14,7 @@ export class MovieFormComponent implements OnInit,OnChanges {
   public movieForm;
   @Output() onMovieSave:EventEmitter<any>=new EventEmitter<any>()
   @Input() movie?:IMovie
+  @Input() context:any;
 
   constructor(private fb:FormBuilder,private movieService:MovieService) {
     this.movieForm=fb.group({
@@ -36,7 +37,16 @@ export class MovieFormComponent implements OnInit,OnChanges {
   }
 
   saveMovie(){
-    this.movieService.addMovie(this.movieForm.value).subscribe(console.log)
-    this.onMovieSave.emit('Ok')
+    if(this.context==='ADD'){
+      this.movieService.addMovie(this.movieForm.value).subscribe(data=>{
+        this.onMovieSave.emit('Ok')
+      })
+    }else if(this.context==='UPDATE'){
+      this.movieService.updateMovie(this.movieForm.value).subscribe(data=>{
+        this.onMovieSave.emit('Ok')
+      }
+    )
+    }
+    
   }
 }

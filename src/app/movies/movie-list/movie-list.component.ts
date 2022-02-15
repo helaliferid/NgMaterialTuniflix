@@ -13,6 +13,7 @@ export class MovieListComponent implements OnInit {
   movies?: IMovie[]
   isFormVisible = false
   movieToUpdate?:IMovie
+  context : 'ADD' | 'UPDATE' = 'ADD'
 
   constructor(private movieService: MovieService) {
   }
@@ -21,8 +22,9 @@ export class MovieListComponent implements OnInit {
     this.movieService.getAllMovies().subscribe(data=>this.movies=data)
   }
 
-  showMovieForm(){
-    this.isFormVisible = true
+  showMovieFormForAdd(){
+    this.isFormVisible = true,
+    this.context='ADD'
   }
 
   onSavedMovie(){
@@ -30,9 +32,10 @@ export class MovieListComponent implements OnInit {
     this.movieService.getAllMovies().subscribe(data=>this.movies=data)
   }
 
-  editMovie(movie: IMovie) {
+  showMovieFormForUpdate(movie: IMovie) {
     this.isFormVisible=true
     this.movieToUpdate={... movie}
+    this.context='UPDATE'
   }
 
   deleteMovie(movie: IMovie) {

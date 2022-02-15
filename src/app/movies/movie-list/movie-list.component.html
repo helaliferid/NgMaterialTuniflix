@@ -3,7 +3,7 @@
   <br>
   <div class="mat-elevation-z8">
     <button mat-raised-button color="primary"
-    (click)="showMovieForm()"
+    (click)="showMovieFormForAdd()"
     >Add Movie</button>
     <div class="wrapper">
       <div class="left">
@@ -24,7 +24,7 @@
               <img [src]="movie.cover">
             </td>
             <td>
-              <button mat-raised-button color="primary" (click)="editMovie(movie)">Edit</button>
+              <button mat-raised-button color="primary" (click)="showMovieFormForUpdate(movie)">Edit</button>
               <button mat-raised-button color="warn" (click)="deleteMovie(movie)">Delete</button>
             </td>
           </tr>
@@ -34,6 +34,7 @@
     <div class="right" *ngIf="isFormVisible">
       <app-movie-form
       [movie]="movieToUpdate" 
+      [context]="context" 
       (onMovieSave)="onSavedMovie()"></app-movie-form>
     </div>
     </div>
@@ -42,3 +43,7 @@
   <!-- <pre><code style="color:blue;">
   {{movies | json}}
 </code></pre> -->
+
+<pre><code>
+  {{context}}
+</code></pre>
