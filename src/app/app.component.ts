@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { map, Observable, shareReplay } from 'rxjs';
+import {BreakpointObserver, Breakpoints} from '@angular/cdk/layout';
 
 @Component({
   selector: 'app-root',
@@ -7,9 +9,11 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'fbNgClone';
-  hidden = false;
+  isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
+    .pipe(
+      map((result:any) => result.matches),
+      shareReplay()
+    );
 
-  toggleBadgeVisibility() {
-    this.hidden = !this.hidden;
-  }
+  constructor(private breakpointObserver: BreakpointObserver) {}
 }
