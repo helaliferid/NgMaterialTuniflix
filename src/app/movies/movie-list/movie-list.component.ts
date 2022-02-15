@@ -1,6 +1,7 @@
 import { Component, OnInit, AfterContentInit, Input, Output, EventEmitter } from '@angular/core';
-import { IMovie } from '../movie-container/movie.model';
+import { IMovie } from '../movie.model';
 import { MovieService } from '../movie.service';
+import { Observable } from 'rxjs';
 
 
 @Component({
@@ -8,23 +9,35 @@ import { MovieService } from '../movie.service';
   templateUrl: './movie-list.component.html',
   styleUrls: ['./movie-list.component.scss']
 })
-export class MovieListComponent implements OnInit{
-  @Input() movies:IMovie[]=[];
-  @Output() onDeleteMovie : EventEmitter<any>=new EventEmitter<IMovie>()
+export class MovieListComponent implements OnInit {
+  movies: IMovie[]=[]
+  isFormVisible = false
 
-  constructor(private movieService:MovieService) {
+  constructor(private movieService: MovieService) {
+    this.movieService.getAllMovies().subscribe(data=>this.movies=data)
   }
 
-  ngOnInit(){
-   
-  }
-  
+  ngOnInit() {
 
-  editMovie(movie:IMovie){
+  }
+
+  addMovie(){
+    this.isFormVisible = true
+  }
+
+  toggleForm(){
+    this.isFormVisible = !this.isFormVisible;
+  }
+
+  onSavedMovie(){
+    this.toggleForm()
+    this.movieService.getAllMovies().subscribe(data=>this.movies=data)
+  }
+
+  editMovie(movie: IMovie) {
     this.movieService.updateMovie(movie)
   }
 
-  deleteMovie(movie:IMovie){
-     this.onDeleteMovie.next(movie)
+  deleteMovie(movie: IMovie) {
   }
 }

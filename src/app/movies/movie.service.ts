@@ -1,17 +1,14 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { IMovie } from './movie-container/movie.model';
+import { IMovie } from './movie.model';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class MovieService {
-  private movies: IMovie[]=[];
- 
-  constructor(private http:HttpClient){
-    
-  }
+  constructor(private http:HttpClient){}
 
   getAllMovies():Observable<IMovie[]>{
      return this.http.get('http://localhost:3000/movies') as Observable<IMovie[]>

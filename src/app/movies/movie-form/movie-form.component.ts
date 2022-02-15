@@ -25,7 +25,7 @@ export class MovieFormComponent implements OnInit {
   }
 
   saveMovie(){
-    this.movieService.addMovie(this.movieForm.value)
+    this.movieService.addMovie(this.movieForm.value).subscribe(console.log)
     this.onMovieSave.emit('Ok')
   }
 }

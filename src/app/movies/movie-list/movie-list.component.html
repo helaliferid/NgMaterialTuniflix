@@ -2,37 +2,41 @@
   <h1>Movie List</h1>
   <br>
   <div class="mat-elevation-z8">
-    <table  class="full-width-table">
-       <thead>
-         <tr>
-           <th>Title</th>
-           <th>Description</th>
-           <th>Cover</th>
-           <th>Actions</th>
-         </tr>
+    <button mat-raised-button color="primary"
+    (click)="addMovie()"
+    >Add Movie</button>
+    <div class="wrapper">
+      <div class="left">
+      <table class="full-width-table">
+        <thead>
+          <tr>
+            <th>Title</th>
+            <th>Description</th>
+            <th>Cover</th>
+            <th>Actions</th>
+          </tr>
         </thead>
-         <tbody>
-           <tr *ngFor="let movie of movies">
-             <td>{{movie.title}}</td>
-             <td>{{movie.description}}</td>
-             <td>
-               <img [src]="movie.cover">
-             </td>
-             <td>
-                <button 
-                  mat-raised-button color="primary"
-                  (click)="editMovie(movie)"
-                >Edit</button>
-                <button mat-raised-button color="warn"
-                (click)="deleteMovie(movie)"
-                >Delete</button>
-             </td>
-           </tr>
-         </tbody>
-    </table>
-     
-</div>
+        <tbody>
+          <tr *ngFor="let movie of movies">
+            <td>{{movie.title}}</td>
+            <td>{{movie.description}}</td>
+            <td>
+              <img [src]="movie.cover">
+            </td>
+            <td>
+              <button mat-raised-button color="primary" (click)="editMovie(movie)">Edit</button>
+              <button mat-raised-button color="warn" (click)="deleteMovie(movie)">Delete</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="right" *ngIf="isFormVisible">
+      <app-movie-form (onMovieSave)="onSavedMovie()"></app-movie-form>
+    </div>
+    </div>
+  </div>
 
-<!-- <pre><code style="color:blue;">
+  <!-- <pre><code style="color:blue;">
   {{movies | json}}
 </code></pre> -->

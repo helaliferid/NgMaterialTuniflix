@@ -9,3 +9,16 @@ ng-container{
 img {
   width: 40%;
 }
+
+.wrapper{
+  display:flex;
+  flex-direction: row;
+  align-items: stretch;
+}
+
+.left{
+  width:40%
+}
+.right{
+  width:40%
+}
