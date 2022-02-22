@@ -5,6 +5,7 @@ import { ContactPageComponent } from './contact-page/contact-page.component';
 import { MoviesPageComponent } from './movies-page/movies-page.component';
 import { AboutPageComponent } from './about-page/about-page.component';
 import { MoviesModule } from '../movies/movies.module';
+import { UserModule } from '../shared/user/user.module';
 
 
 
@@ -17,7 +18,8 @@ import { MoviesModule } from '../movies/movies.module';
   ],
   imports: [
     CommonModule,
-    MoviesModule
+    MoviesModule,
+    UserModule
   ],
   exports:[
     HomePageComponent,

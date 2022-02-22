@@ -10,6 +10,7 @@ import { MatSortModule } from '@angular/material/sort';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatSelectModule} from '@angular/material/select';
 import {MatInputModule} from '@angular/material/input'
+import {MatRadioModule} from '@angular/material/radio';
 
 const materials = [
   MatButtonModule,
@@ -21,7 +22,8 @@ const materials = [
   MatSortModule,
   MatFormFieldModule,
   MatSelectModule,
-  MatInputModule
+  MatInputModule,
+  MatRadioModule
 ]
 
 @NgModule({
