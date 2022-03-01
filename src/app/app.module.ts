@@ -19,6 +19,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatCardModule } from '@angular/material/card';
 import { ReactiveFormsModule } from '@angular/forms';
+import { UserModule } from './shared/user/user.module';
 @NgModule({
   declarations: [
     AppComponent,
@@ -41,7 +42,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     MatSelectModule,
     MatRadioModule,
     MatCardModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    UserModule
   ],
   providers: [],
   bootstrap: [AppComponent]

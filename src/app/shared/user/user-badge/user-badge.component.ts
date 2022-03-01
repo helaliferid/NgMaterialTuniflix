@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { AuthenticateService } from '../authenticate.service';
 
 @Component({
   selector: 'app-user-badge',
@@ -6,10 +7,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./user-badge.component.scss']
 })
 export class UserBadgeComponent implements OnInit {
-
-  constructor() { }
+  @Input() userInfo:any;
+  constructor(private authenticateService:AuthenticateService) { }
 
   ngOnInit(): void {
   }
-
+  logout(){
+    this.authenticateService.logout();
+  }
 }
