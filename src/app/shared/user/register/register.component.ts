@@ -1,5 +1,6 @@
 import { Component} from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
+import { UserService } from '../user.service';
 
 @Component({
   selector: 'app-register',
@@ -13,9 +14,9 @@ export class RegisterComponent {
     password: ['', Validators.required],
   });
 
-  constructor(private fb: FormBuilder) {}
+  constructor(private fb: FormBuilder,private userService:UserService) {}
 
   onSubmit(): void {
-    alert(JSON.stringify(this.registerForm.value,undefined,3));
+    this.userService.registerUser(this.registerForm.value).subscribe(console.log)
   }
 }

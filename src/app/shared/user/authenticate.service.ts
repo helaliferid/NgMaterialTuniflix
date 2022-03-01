@@ -22,7 +22,7 @@ export class AuthenticateService {
 
   login(email: string, password: string) {
     let _user: IUser;
-    return this.http.post<any>(`${environment. BASE_API_URI}/api/v1/users/authenticate`, { email, password })
+    return this.http.post<any>(`${environment. BASE_API_URI}/users/authenticate`, { email, password })
       .pipe(map(response => {
         _user = { ...response.payload.user };
         _user.token = response.payload.token;
