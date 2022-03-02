@@ -20,6 +20,8 @@ import { MatRadioModule } from '@angular/material/radio';
 import { MatCardModule } from '@angular/material/card';
 import { ReactiveFormsModule } from '@angular/forms';
 import { UserModule } from './shared/user/user.module';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { JwtInterceptor } from './shared/user/jwt.interceptors';
 @NgModule({
   declarations: [
     AppComponent,
@@ -45,7 +47,9 @@ import { UserModule } from './shared/user/user.module';
     ReactiveFormsModule,
     UserModule
   ],
-  providers: [],
+  providers: [
+     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

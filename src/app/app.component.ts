@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { map, Observable, shareReplay } from 'rxjs';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { AuthenticateService } from './shared/user/authenticate.service';
@@ -8,9 +8,10 @@ import { AuthenticateService } from './shared/user/authenticate.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements OnInit {
+export class AppComponent implements OnInit,OnDestroy {
   title = 'fbNgClone';
   currentUser?: any;
+  subscription?:any;
 
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
     .pipe(
@@ -24,15 +25,18 @@ export class AppComponent implements OnInit {
     private breakpointObserver: BreakpointObserver,
     private authenticationService: AuthenticateService
   ) { }
-
-
+  
+  
   ngOnInit(): void {
-    this.authenticationService.currentUser$.subscribe({
+    this.subscription= this.authenticationService.currentUser$.subscribe({
       next: (user) => {
         this.currentUser = user
       }
     })
   }
-
+  
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe()
+  }
  
 }

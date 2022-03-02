@@ -2,6 +2,7 @@ import { Component, OnInit, AfterContentInit, Input, Output, EventEmitter, OnCha
 import { IMovie } from '../movie.model';
 import { MovieService } from '../movie.service';
 import { Observable } from 'rxjs';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 
 @Component({
@@ -10,16 +11,25 @@ import { Observable } from 'rxjs';
   styleUrls: ['./movie-list.component.scss']
 })
 export class MovieListComponent implements OnInit {
-  movies?: IMovie[]
+  movies?: any;
   isFormVisible = false
   movieToUpdate?:IMovie
   context : 'ADD' | 'UPDATE' = 'ADD'
 
-  constructor(private movieService: MovieService) {
+  constructor(
+    private movieService: MovieService,
+    private snackBar:MatSnackBar ) {
   }
   
   ngOnInit() {
-    this.movieService.getAllMovies().subscribe(data=>this.movies=data)
+    this.movieService.getAllMovies().subscribe(data=>{
+      if(data.status==="error"){
+        this.snackBar.open(data.message,'x');
+        this.movies=[];
+      }else{
+        this.movies=data.payload}
+      }
+      )
   }
 
   showMovieFormForAdd(){

@@ -10,8 +10,8 @@ import { IMovie } from './movie.model';
 export class MovieService {
   constructor(private http:HttpClient){}
 
-  getAllMovies():Observable<IMovie[]>{
-     return this.http.get('http://localhost:3000/movies') as Observable<IMovie[]>
+  getAllMovies():Observable<any>{
+     return this.http.get('http://localhost:3000/movies/featured') as Observable<IMovie[]>
   }
 
   addMovie(movie:IMovie):Observable<IMovie>{
