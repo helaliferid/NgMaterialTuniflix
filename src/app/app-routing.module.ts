@@ -5,6 +5,7 @@ import { MoviesPageComponent } from './layouts/movies-page/movies-page.component
 import { AboutPageComponent } from './layouts/about-page/about-page.component';
 import { ContactPageComponent } from './layouts/contact-page/contact-page.component';
 import { RegisterComponent } from './shared/user/register/register.component';
+import { AuthGuard } from './gards/auth.guard';
 
 const routes: Routes = [
   {
@@ -16,7 +17,13 @@ const routes: Routes = [
     component:RegisterComponent
   },
   {
-    path:'movies',
+    path:'fmovies',
+    component:MoviesPageComponent,
+    canActivate:[AuthGuard]
+
+  },
+  {
+    path:'ufmovies',
     component:MoviesPageComponent
   },
   {
