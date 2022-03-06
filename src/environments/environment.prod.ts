@@ -1,6 +1,6 @@
 export const environment = {
   production: true,
-  BASE_API_URI: 'https://themoviesapi.herokuapp.com/',
+  BASE_API_URI: 'https://themoviesapi.herokuapp.com',
   CLOUDINARY: {
     CLOUD_NAME: 'alfa-computers',
     API_KEY: '284629792882378',
