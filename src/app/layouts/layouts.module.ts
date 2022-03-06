@@ -6,6 +6,7 @@ import { MoviesPageComponent } from './movies-page/movies-page.component';
 import { AboutPageComponent } from './about-page/about-page.component';
 import { MoviesModule } from '../movies/movies.module';
 import { UserModule } from '../shared/user/user.module';
+import { FooterComponent } from './footer/footer.component';
 
 
 
@@ -14,7 +15,8 @@ import { UserModule } from '../shared/user/user.module';
     HomePageComponent,
     ContactPageComponent,
     MoviesPageComponent,
-    AboutPageComponent
+    AboutPageComponent,
+    FooterComponent
   ],
   imports: [
     CommonModule,
@@ -25,7 +27,8 @@ import { UserModule } from '../shared/user/user.module';
     HomePageComponent,
     ContactPageComponent,
     MoviesPageComponent,
-    AboutPageComponent
+    AboutPageComponent,
+    FooterComponent
   ]
 })
 export class LayoutsModule { }

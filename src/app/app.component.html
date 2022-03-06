@@ -23,9 +23,13 @@
           *ngIf="isHandset$ | async">
           <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
         </button>
-        <span>fbNgClone</span>
+        <div>
+          <img src="./assets/logo.png" alt="log" class="logo">
+          <span>TuniFlix</span>
+        </div>
       </mat-toolbar>
       <router-outlet></router-outlet>
+      <app-footer></app-footer>
     </mat-sidenav-content>
   </mat-sidenav-container>
   
