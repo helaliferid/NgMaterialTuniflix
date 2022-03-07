@@ -21,10 +21,10 @@ export class MovieService {
 
 
   removeMovie(movie:IMovie): Observable<any>{
-     return this.http.delete(`${environment.BASE_API_URI}/movies/${movie.id}`)
+     return this.http.delete(`${environment.BASE_API_URI}/movies/${movie._id}`)
   }
 
   updateMovie(movie:IMovie):Observable<any>{
-    return this.http.put(`${environment.BASE_API_URI}/movies/${movie.id}`,movie)
+    return this.http.put(`${environment.BASE_API_URI}/movies/${movie._id}`,movie)
   }
 }
