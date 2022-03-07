@@ -1,3 +1,4 @@
+import {CloudinaryModule} from '@cloudinary/ng';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
@@ -45,7 +46,8 @@ import { JwtInterceptor } from './shared/user/jwt.interceptors';
     MatRadioModule,
     MatCardModule,
     ReactiveFormsModule,
-    UserModule
+    UserModule,
+    CloudinaryModule
   ],
   providers: [
      { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
